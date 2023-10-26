@@ -25,7 +25,7 @@ class _Registration_pageState extends State<Registration_page> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      //Its a container class - Partner 
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
