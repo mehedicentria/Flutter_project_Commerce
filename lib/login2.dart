@@ -11,17 +11,17 @@ class LoginDemo extends StatefulWidget {
 
 class _LoginDemoState extends State<LoginDemo> {
 
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();             // Controller of Email TextField
 
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();          // Controller of Password TextField
 
 
-  signIn() async {
+  signIn() async {                                                                  // Asynchronus SignIn function.This function will check the user id and password
     try {
       UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailController.text, password: _passwordController.text);
       var authCredintial = userCredential.user;
-      if(authCredintial!.uid.isNotEmpty) {
-        Get.off( Home());
+      if(authCredintial!.uid.isNotEmpty) {        // If the user id and password in the DataBase
+        Get.off( Home());                         //Then we will go Product Home page . Where we will see the product list
       } else {
         Get.snackbar(
           "Something Wrong",
@@ -142,6 +142,7 @@ class _LoginDemoState extends State<LoginDemo> {
                     labelStyle: const TextStyle(
                       color: Colors.white,
                       fontSize: 15,
+                      
                       fontWeight: FontWeight.w600,
                     ),
                     hintText: 'Enter secure password'),
