@@ -37,6 +37,7 @@ class _Registration_pageState extends State<Registration_page> {
         )
       ),
       child: Scaffold(
+        //Its a scaffold class - Main
         backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         child: Column(
