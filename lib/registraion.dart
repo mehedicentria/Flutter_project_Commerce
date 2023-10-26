@@ -18,7 +18,7 @@ class _Registration_pageState extends State<Registration_page> {
 
   final TextEditingController _passwordController = TextEditingController();
 
-
+  // It is a text editing controller
   
 
   
