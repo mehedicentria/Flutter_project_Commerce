@@ -31,7 +31,7 @@ class _LoginDemoState extends State<LoginDemo> {
             Home()); //Then we will go Product Home page . Where we will see the product list
       } else {
         Get.snackbar(
-          "Something Wrong",
+          "Something Wrong happened",
           "Sorry Something is going wrong",
           icon: const Icon(Icons.sms_failed, color: Colors.white),
           snackPosition: SnackPosition.BOTTOM,
