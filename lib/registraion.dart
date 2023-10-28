@@ -27,6 +27,7 @@ class _Registration_pageState extends State<Registration_page> {
     return Container(
       
       decoration: BoxDecoration(
+        //Box decrotation for design pupose
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
