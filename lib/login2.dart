@@ -17,7 +17,7 @@ class _LoginDemoState extends State<LoginDemo> {
 
   final TextEditingController _passwordController =
       TextEditingController(); // Controller of Password TextField
-
+  bool isLoading = false;
   signIn() async {
     // Asynchronus SignIn function.This function will check the user id and password
     try {
@@ -62,6 +62,12 @@ class _LoginDemoState extends State<LoginDemo> {
         icon: const Icon(Icons.sms_failed, color: Colors.white),
         snackPosition: SnackPosition.BOTTOM,
       );
+    } finally {
+      Future.delayed(Duration(seconds: 6), () {
+        setState(() {
+          isLoading = false;
+        });
+      });
     }
   }
 
@@ -88,7 +94,7 @@ class _LoginDemoState extends State<LoginDemo> {
                   Text("Welcome back, you've been missed",
                       style: GoogleFonts.lobster(fontSize: 20)),
                   const SizedBox(height: 20),
-          
+
                   // Email TextField Start
                   Padding(
                     padding: const EdgeInsets.symmetric(
@@ -110,9 +116,9 @@ class _LoginDemoState extends State<LoginDemo> {
                     ),
                   ),
                   const SizedBox(height: 20),
-          
+
                   // Password TextField Start
-          
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Container(
@@ -132,35 +138,37 @@ class _LoginDemoState extends State<LoginDemo> {
                       ),
                     ),
                   ),
-          
+
                   const SizedBox(height: 20),
                   // Sign in Button Start
-          
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: GestureDetector(
-                      onTap: () {
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white),
+                      onPressed: () {
+                        setState(() {
+                          isLoading = true;
+                        });
                         signIn();
                       },
-                      child: Container(
-                        padding: const EdgeInsets.all(25),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Colors.blue,
-                        ),
-                        child: const Center(
-                          child: Text("sign in",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                  color: Colors.white)),
-                        ),
-                      ),
+                      child: isLoading
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              ],
+                            )
+                          : const Text("Sign IN"),
                     ),
                   ),
-          
+
                   const SizedBox(height: 25),
-          
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
